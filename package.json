@@ -1,13 +1,14 @@
 {
   "name": "location-finder",
   "version": "0.0.0",
+  "main": "index.js",
   "engines": {
     "node": "16.15.1",
     "npm": "8.13.1"
   },
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
