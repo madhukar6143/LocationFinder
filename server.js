@@ -16,7 +16,7 @@ mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,clien
     {
         dataBaseObj=client.db("myfirstdb")
         console.log("connected to database")
-       
+       start()
     }
 })
 
@@ -27,7 +27,8 @@ app.use(express.static(path.join(__dirname,'./dist/locationdetector/')))
 
 
 
-app.use('/presentcontest',async(req,res)=>{
+const  start = async () => 
+{
   
     try {
         const resp= await axios.get('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=+latitude+&longitude=+longitude+&localityLanguage=en')
@@ -42,19 +43,17 @@ app.use('/presentcontest',async(req,res)=>{
        console.log("yeah",newUser)
 
        await dataBaseObj.collection("mycollection").insertOne(newUser)
-       res.send(newUser)
+       
     } catch (err) {
         // Handle Error Here
         console.error(err);
     }
-})
+}
 
 
 
 
   
 // Start the app by listening on the default Heroku port
-const port= 3000;
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-  });
+const port=3000|| 8080;
+app.listen(port,()=>console.log(`server working on ${port}...`))

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ConnectorService } from './connector.service';
+/* import { HttpClient } from '@angular/common/http';
+import { ConnectorService } from './connector.service'; */
 
 
 @Component({
@@ -10,7 +10,7 @@ import { ConnectorService } from './connector.service';
 })
 export class AppComponent {
   title = 'LocationFinder';
-  constructor( private  http: HttpClient ,private connectorservice:ConnectorService  ) { }
+  /* constructor( private  http: HttpClient ,private connectorservice:ConnectorService  ) { }
   
 
 
@@ -31,7 +31,7 @@ export class AppComponent {
   console.log(err)
     }
   )
-  }
+  } */
   }
   
   
