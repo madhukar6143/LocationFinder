@@ -3,8 +3,7 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 const mc=require("mongodb").MongoClient
-require("dotenv").config()
-const dataBaseUrl = process.env.DATABASEURL
+const dataBaseUrl ="mongodb+srv://madhu:madhu@clusterbackend.szevd.mongodb.net/myfirstdb?retryWrites=true&w=majority"
 let dataBaseObj;
 
 mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,client)=>
@@ -24,6 +23,8 @@ mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,clien
 
 //connect to angular app
 app.use(express.static(path.join(__dirname,'./dist/locationdetector/')))
+
+
 
 
 app.use('/presentcontest',async(req,res)=>{
@@ -53,5 +54,7 @@ app.use('/presentcontest',async(req,res)=>{
 
   
 // Start the app by listening on the default Heroku port
-const port= process.env.port||8080;
-app.listen(port,()=>console.log(`server working on ${port}...`))
+const port= 3000;
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
