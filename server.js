@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const axios = require('axios');
-const mc=require("mongodb").MongoClient
+/* const mc=require("mongodb").MongoClient
 const dataBaseUrl ="mongodb+srv://madhu:madhu@clusterbackend.szevd.mongodb.net/myfirstdb?retryWrites=true&w=majority"
-let dataBaseObj;
 
-mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,client)=>
+let dataBaseObj; */
+
+/* mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,client)=>
 {
     if(err)
     {
@@ -18,12 +19,11 @@ mc.connect(dataBaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,clien
         console.log("connected to database")
        start()
     }
-})
+}) */
 
 
 //connect to angular app
 app.use(express.static(path.join(__dirname,'./dist/locationdetector/')))
-
 
 
 
@@ -42,14 +42,18 @@ const  start = async () =>
         }
        console.log("yeah",newUser)
 
-       await dataBaseObj.collection("mycollection").insertOne(newUser)
-       
+       /* await dataBaseObj.collection("mycollection").insertOne(newUser)
+        */
     } catch (err) {
         // Handle Error Here
         console.error(err);
     }
 }
+
+start()
   
 // Start the app by listening on the default Heroku port
 const port=3000|| 8080;
-app.listen(port,()=>console.log(`server working on ${port}...`))
+app.listen(port,()=>
+
+console.log(`server working on ${port}...`))
